@@ -1,8 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const path = require('path');
+const generateProfile = require('./generateProfile');
+const Manager = require('./lib:/Manager');
+const Engineer = require('./lib:/Engineer.js');
+const Intern = require('./lib:/Intern.js');
 const employees = [];
 
 
@@ -36,10 +38,8 @@ inquirer
       console.log('Please Try Again');
     }
   });
-const createEmployee = () =>
-const newEmployee = () =>
 
-const createManager = () => {
+createManager = () => {
     return inquirer.prompt([
       {
         type: 'input',
@@ -61,11 +61,14 @@ const createManager = () => {
         name:'officeId',
         message:'Office ID number'
       },
-    ])
+    ]).then(answers => {
+      console.log(answers);
+      const manager = new Manager(answers.name, answers.id, answers.email, answers.officeId);
+      employees.push(manager);
+    })
 }
-const newManager = () =>
 
-const createEngineer = () => {
+createEngineer = () => {
   return inquirer.prompt([
     {
       type: 'input',
@@ -84,14 +87,17 @@ const createEngineer = () => {
     },
     {
       type: 'number',
-      name: 'gitHud',
+      name: 'gitHub',
       message: 'GitHub Username:'
     }
-  ])
+  ]).then(answers => {
+    console.log(answers);
+    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
+    employees.push(engineer);
+  })
 }
-const newEngineer
 
-const createIntern = () => {
+createIntern = () => {
   return inquirer.prompt([
     {
       type: 'input',
@@ -113,5 +119,11 @@ const createIntern = () => {
       name: 'school',
       message: 'School:'
     }
-  ])
+  ]).then(answers => {
+    console.log(answers);
+    const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+    employees.push(intern);
+  })
 }
+function writeToFile(generateProfile)('profile.html',answers)
+
