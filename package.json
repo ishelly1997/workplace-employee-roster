@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/ishelly1997/workplace-employee-roster/issues"
   },
-  "homepage": "https://github.com/ishelly1997/workplace-employee-roster#readme"
+  "homepage": "https://github.com/ishelly1997/workplace-employee-roster#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
 }
