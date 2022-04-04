@@ -8,42 +8,47 @@ const Intern = require('./lib:/Intern.js');
 const employees = [];
 
 
-
+function firstPrompt() {
 inquirer
   .prompt([
     {
         type:'list',
         name:'employeeRole',
         message: "What is this Employee's Role?",
-        choices: ['Manager', 'Engineer', 'Employee', 'Intern']
+        choices: ['Manager', 'Engineer', 'Intern', 'Exit']
     }
   ])
   .then((employeeRole) => {
-    switch(employeeRole) {
+    console.log(employeeRole)
+    switch(employeeRole.employeeRole) {
         case 'Manager':
         createManager()
             break
         case 'Engineer':
         createEngineer()
-        case 'Employee':
-            createEmployee()
+        break
         case 'Intern':
             createIntern()
+            break
+        default:
+          exit();
+          break
     }
   })
   .catch((error) => {
     if (error.isTtyError) {
+      console.log(error);
       // Prompt couldn't be rendered in the current environment
-    } else {
-      console.log('Please Try Again');
     }
-  });
+
+    });
+}
 
 createManager = () => {
-    return inquirer.prompt([
+    inquirer.prompt([
       {
         type: 'input',
-        name: 'employeeName',
+        name: 'name',
         message: 'Employee name:'
       },
       {
@@ -65,6 +70,7 @@ createManager = () => {
       console.log(answers);
       const manager = new Manager(answers.name, answers.id, answers.email, answers.officeId);
       employees.push(manager);
+      firstPrompt();
     })
 }
 
@@ -94,6 +100,7 @@ createEngineer = () => {
     console.log(answers);
     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
     employees.push(engineer);
+    firstPrompt();
   })
 }
 
@@ -123,7 +130,15 @@ createIntern = () => {
     console.log(answers);
     const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
     employees.push(intern);
+    firstPrompt();
   })
 }
-function writeToFile(generateProfile)('profile.html',answers)
 
+function exit() {
+  console.log('goodbye');
+  fs.writeFile('profile.html', generateProfile(employees), (error) => {
+    if(error) throw error;
+  }) 
+}
+
+firstPrompt();
