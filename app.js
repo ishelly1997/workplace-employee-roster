@@ -1,10 +1,10 @@
-const inquirer = require("inquirer");
-const fs = require('fs');
 const path = require('path');
 const generateProfile = require('./generateProfile');
 const Manager = require('./lib:/Manager');
 const Engineer = require('./lib:/Engineer.js');
 const Intern = require('./lib:/Intern.js');
+const inquirer = require("inquirer");
+const fs = require('fs');
 const employees = [];
 
 
@@ -58,7 +58,7 @@ createManager = () => {
       },
       {
         type:'number',
-        name:'employeeId',
+        name:'id',
         message:'Employee ID number'
       },
       {
@@ -78,7 +78,7 @@ createEngineer = () => {
   return inquirer.prompt([
     {
       type: 'input',
-      name: 'employeeName',
+      name: 'name',
       message: 'Employee name:'
     },
     {
@@ -88,12 +88,12 @@ createEngineer = () => {
     },
     {
       type:'number',
-      name:'employeeId',
+      name:'id',
       message:'Employee ID number'
     },
     {
-      type: 'number',
-      name: 'gitHub',
+      type: 'input',
+      name: 'github',
       message: 'GitHub Username:'
     }
   ]).then(answers => {
@@ -108,12 +108,12 @@ createIntern = () => {
   return inquirer.prompt([
     {
       type: 'input',
-      name: 'employeeName',
+      name: 'name',
       message: 'Employee name:'
     },
     {
       type:'number',
-      name:'employeeId',
+      name:'id',
       message:'Employee ID number'
     },
     {
