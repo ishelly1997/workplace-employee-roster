@@ -1,10 +1,11 @@
 # workplace-employee-roster
 
-HTML Javascript Node.js 
-
-
 Application to help organize your employees information
 Add Employee info to create a team roster 
 
+## Built With
+HTML Javascript Node.js 
 
-[10oopvid.mov.zip](https://github.com/ishelly1997/workplace-employee-roster/files/8710482/10oopvid.mov.zip)
+##  Demo
+https://user-images.githubusercontent.com/95631495/168877666-03fc4417-3104-42ca-ac5d-9c55046e93f8.mp4
+
