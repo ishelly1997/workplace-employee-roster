@@ -98,7 +98,7 @@ createEngineer = () => {
     }
   ]).then(answers => {
     console.log(answers);
-    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
+    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
     employees.push(engineer);
     firstPrompt();
   })
